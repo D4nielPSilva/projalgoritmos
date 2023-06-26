@@ -7,6 +7,8 @@
 #define MAX_SITE 100
 #define MAX_TELEFONE 20
 
+//Declarar variáveis
+
 typedef struct {
     char descricao[MAX_DESCRICAO];
     float peso;
@@ -20,15 +22,17 @@ typedef struct {
     char uf[3];
 } Produto;
 
-void listarTodasAsMarcas(Produto* produtos, int numProdutos) {
+//Opções do Menu
+
+listarTodasAsMarcas(Produto* produtos, int numProdutos) {
     printf("\n--- Marcas Registradas ---\n");
     for (int i = 0; i < numProdutos; i++) {
         printf("%s\n", produtos[i].marca);
-    }
-    printf("-------------------------\n");
+        printf("-------------------------\n");
+    }   
 }
 
-void listarTodosOsProdutos(Produto* produtos, int numProdutos) {
+listarTodosOsProdutos(Produto* produtos, int numProdutos) {
     printf("\n--- Lista de Produtos ---\n");
     for (int i = 0; i < numProdutos; i++) {
         printf("Produto: %s\n", produtos[i].descricao);
@@ -36,7 +40,7 @@ void listarTodosOsProdutos(Produto* produtos, int numProdutos) {
     }
 }
 
-void listarProdutosPorEstado(Produto* produtos, int numProdutos, char estado[3]) {
+listarProdutosPorEstado(Produto* produtos, int numProdutos, char estado[3]) {
     printf("\n--- Produtos no Estado %s ---\n", estado);
     for (int i = 0; i < numProdutos; i++) {
         if (strcmp(produtos[i].uf, estado) == 0) {
@@ -46,7 +50,7 @@ void listarProdutosPorEstado(Produto* produtos, int numProdutos, char estado[3])
     }
 }
 
-void listarProdutosPorMarca(Produto* produtos, int numProdutos, char marca[MAX_MARCA]) {
+listarProdutosPorMarca(Produto* produtos, int numProdutos, char marca[MAX_MARCA]) {
     printf("\n--- Produtos da Marca %s ---\n", marca);
     for (int i = 0; i < numProdutos; i++) {
         if (strcmp(produtos[i].marca, marca) == 0) {
@@ -56,7 +60,7 @@ void listarProdutosPorMarca(Produto* produtos, int numProdutos, char marca[MAX_M
     }
 }
 
-void encontrarProdutoMaisCaro(Produto* produtos, int numProdutos) {
+encontrarProdutoMaisCaro(Produto* produtos, int numProdutos) {
     float maiorValor = 0;
     for (int i = 0; i < numProdutos; i++) {
         if (produtos[i].valorVenda > maiorValor) {
@@ -73,7 +77,7 @@ void encontrarProdutoMaisCaro(Produto* produtos, int numProdutos) {
     printf("--------------------------------------\n");
 }
 
-void encontrarFabricanteMaisBarato(Produto* produtos, int numProdutos) {
+encontrarFabricanteMaisBarato(Produto* produtos, int numProdutos) {
     float menorValor = produtos[0].valorVenda;
     for (int i = 1; i < numProdutos; i++) {
         if (produtos[i].valorVenda < menorValor) {
@@ -90,7 +94,7 @@ void encontrarFabricanteMaisBarato(Produto* produtos, int numProdutos) {
     printf("--------------------------------------------\n");
 }
 
-void ordenarProdutosPorValor(Produto* produtos, int numProdutos) {
+ordenarProdutosPorValor(Produto* produtos, int numProdutos) {
     for (int i = 0; i < numProdutos - 1; i++) {
         for (int j = 0; j < numProdutos - i - 1; j++) {
             if (produtos[j].valorVenda > produtos[j + 1].valorVenda) {
@@ -109,7 +113,7 @@ void ordenarProdutosPorValor(Produto* produtos, int numProdutos) {
     }
 }
 
-void ordenarProdutosPorLucro(Produto* produtos, int numProdutos) {
+ordenarProdutosPorLucro(Produto* produtos, int numProdutos) {
     for (int i = 0; i < numProdutos - 1; i++) {
         for (int j = 0; j < numProdutos - i - 1; j++) {
             if (produtos[j].valorLucro > produtos[j + 1].valorLucro) {
@@ -127,6 +131,9 @@ void ordenarProdutosPorLucro(Produto* produtos, int numProdutos) {
         printf("-------------------------------------------\n");
     }
 }
+
+
+//Armazenar as informações
 
 int main() {
     int opcao, numProdutos;
